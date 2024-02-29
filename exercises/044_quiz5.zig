@@ -18,14 +18,19 @@ const Elephant = struct {
 
 pub fn main() void {
     var elephantA = Elephant{ .letter = 'A' };
-    // (Please add Elephant B here!)
+    var elephantB = Elephant{ .letter = 'B' };
     var elephantC = Elephant{ .letter = 'C' };
 
     // Link the elephants so that each tail "points" to the next elephant.
     // They make a circle: A->B->C->A...
     elephantA.tail = &elephantB;
     // (Please link Elephant B's tail to Elephant C here!)
+    elephantB.tail = &elephantC;
     elephantC.tail = &elephantA;
+
+    // while (!undefined) {  // I guess this is what will happen if you don't link elephantC to tail of elephantB
+    //     std.debug.print("This is true", .{});
+    // }
 
     visitElephants(&elephantA);
 
