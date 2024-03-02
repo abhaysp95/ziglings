@@ -73,6 +73,8 @@ pub fn main() void {
 // them!
 fn printSequence(my_seq: anytype) void {
     const my_typeinfo = @typeInfo(@TypeOf(my_seq));
+    // print("{} |==| {}", .{ @TypeOf(my_seq), @typeInfo(@TypeOf(my_seq)) });
+    // print("\n", .{});
 
     // The TypeInfo contained in my_type is a union. We use a
     // switch to handle printing the Array or Pointer fields,
@@ -82,7 +84,7 @@ fn printSequence(my_seq: anytype) void {
             print("Array:", .{});
 
             // Loop through the items in my_seq.
-            for (???) |s| {
+            for (my_seq) |s| {
                 print("{}", .{s});
             }
         },
@@ -94,7 +96,7 @@ fn printSequence(my_seq: anytype) void {
             // Loop through the items in my_seq until we hit the
             // sentinel value.
             var i: usize = 0;
-            while (??? != my_sentinel) {
+            while (my_seq[i] != my_sentinel) {
                 print("{}", .{my_seq[i]});
                 i += 1;
             }
